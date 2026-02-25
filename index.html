@@ -253,6 +253,16 @@
     color: var(--accent);
   }
 
+  a.site-name {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a.site-name:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+  }
+
   .update-badge {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.65rem;
@@ -635,6 +645,71 @@ function getStatusLabel(status) {
   return status;
 }
 
+const SITE_URLS = {
+  'americanpendev':  'https://americanpendev.wpenginepowered.com',
+  'bencordrop':      'https://www.bencordropsupport.com',
+  'bencordropsprd':  'https://bencordropsprd.wpenginepowered.com',
+  'bencormidameri':  'https://www.bencormidamerica.com',
+  'bencorplans':     'https://www.bencorplans.com',
+  'benthatbenchil':  'https://www.benefitsthatbenefitchildren.com',
+  'benefitvision':   'https://www.benefitvision.com',
+  'chimienti':       'https://www.chimienti.com',
+  'cmsmain':         'https://cmsmain.wpenginepowered.com',
+  'prodc19':         'https://prodc19.wpengine.com',
+  'wibble':          'https://www.daybright.com',
+  'dbrtsecp':        'https://daybrightsecurities.com',
+  'dbsol':           'https://www.daybrightsolutions.com',
+  'dbrtwelcome':     'https://daybrightwelcome.com',
+  'doncrawfordprd':  'https://doncrawford.com',
+  'ebensvcsstg':     'https://ebensvcsstg.wpengine.com',
+  'etaprod':         'https://www.etainsurancegroup.com',
+  'finwell':         'https://www.usrbpfinancialwellness.com',
+  'fopbenefitsprd':  'https://www.fop-benefits.com',
+  'frowen':          'https://www.frowen.com',
+  'growwithusprod':  'https://www.growwithusrbp.com',
+  'hesselpen':       'https://hesselpen.com',
+  'hillendalepa':    'https://www.hillendalepa.com',
+  'inghamprod':      'https://ingham.com',
+  'innobenefits':    'https://innobenefits.com',
+  'integritypen':    'https://integritypension.com',
+  'jhpcprod':        'https://jimhallinanpension.com',
+  'joinusrbp':       'https://joinusrbp.wpengine.com',
+  'kadesmargolis':   'https://4kmc.com',
+  'kmcwkshpprod':    'https://kmcwkshpprod.wpengine.com',
+  'landingprod':     'https://landing.usrbpartners.com',
+  'usrponline':      'https://usrponline.wpengine.com',
+  'liebg':           'https://liebg.com',
+  'mybenefitsinfo':  'https://mybenefitsinfo.com',
+  'mymidamerica':    'https://mymidamerica.com',
+  'mymidameriprod':  'https://www.mymidamericasecurities.com',
+  'myplanvideo':     'https://myplanvideo.wpenginepowered.com',
+  'nbp':             'https://nationalbenefitpartners.com',
+  'otcgprod':        'https://otcgprod.wpengine.com',
+  'pasi':            'https://www.pasiusa.com',
+  'platinum401dev':  'https://platinum401dev.wpenginepowered.com',
+  'ppc01':           'https://pensionplanningconsultants.com',
+  'ppcfs':           'https://faststart401k.com',
+  'qualifiedpensi':  'https://qualified-pension.com',
+  'rpaeducator':     'https://www.rpaeducator.com',
+  'selectabenefit':  'https://selectabenefit.com',
+  'sbgroupprod':     'https://www.selectbenefitsgroup.com',
+  'sfandc2020':      'https://www.sfandc.com',
+  'txehpprod':       'https://txehpprod.wpengine.com',
+  'beaconprod':      'https://www.thebenefitsbeacon.com',
+  'tpaengine':       'https://tpaengine.com',
+  'trpcweb':         'https://trpcweb.com',
+  'usbcproduction':  'https://usbcproduction.wpengine.com',
+  'usebsg':          'https://www.usebsg.com',
+  'usebsg3':         'https://usebsg3.wpengine.com',
+  'usenrollments':   'https://usenrollments.com',
+  'usesprod':        'https://www.usenrollmentservices.com',
+  'usevbprod':       'https://www.usevb.com',
+  'usrbpartners':    'https://usrbpartners.com',
+  'usrp':            'https://usrp.wpengine.com',
+  'usrpsites':       'https://usrpsites.wpengine.com',
+  'vcvolprod':       'https://www.vcvoluntary.com',
+};
+
 // Render Sites
 function renderSites(sitesToShow) {
   const grid = document.getElementById('sites-grid');
@@ -659,7 +734,7 @@ function renderSites(sitesToShow) {
 
     return `<div class="site-card">
       <div class="site-card-header">
-        <span class="site-name">${s.site}</span>
+        ${SITE_URLS[s.site] ? `<a class="site-name" href="${SITE_URLS[s.site]}" target="_blank" rel="noopener noreferrer">${s.site}</a>` : `<span class="site-name">${s.site}</span>`}
         ${updateBadge}
       </div>
       <div class="site-card-body">
